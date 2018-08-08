@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 public class HttpAspect {
     private final static Logger LOGGER = LoggerFactory.getLogger(HttpAspect.class);
 
-    @Pointcut("execution(public * com.newforesee.girl.controller.*(..))")
+    @Pointcut("execution(public * com.newforesee.girl.controller..*.*(..))")
     public void log() {
     }
 
