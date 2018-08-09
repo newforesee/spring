@@ -59,4 +59,9 @@ public class GirlService {
     public Girl findOne(Integer id){
         return girlRepository.findOne(id);
     }
+
+    @Transactional
+    public void updateGirl(Integer id,Integer age){
+        girlRepository.updateGril(id,age);
+    }
 }

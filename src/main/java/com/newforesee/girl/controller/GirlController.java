@@ -99,9 +99,23 @@ public class GirlController {
         girl.setAge(age);
         girl.setId(id);
         girl.setCupSize(cupSize);
+
+
         return ResultUtil.success(girlRepository.save(girl));
+    }
 
-
+    @PostMapping("/xadd/{id}")
+    public Result<Girl> update(@PathVariable("id") Integer id,
+                               @RequestParam("cupSize") String cupSize,
+                               @RequestParam("age") Integer age
+    ){
+//        Girl girl = girlRepository.getOne(id);
+//        girl.setAge(age);
+//        girl.setCupSize(cupSize);
+        girlService.updateGirl(id,age);
+        return ResultUtil.success("success");
+//
+//
     }
 
     /**
@@ -113,6 +127,7 @@ public class GirlController {
     public void girlDelete(@PathVariable("id") Integer id) {
         girlRepository.delete(id);
     }
+
 
     @PostMapping(value = "/girls/tow")
     public void gileTwo() {

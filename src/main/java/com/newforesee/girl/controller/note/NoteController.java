@@ -41,6 +41,14 @@ public class NoteController {
         return ResultUtil.success(noteService.notesListByuserid(userid));
     }
 
+    @PostMapping("/dropnote")
+    public Result<Notes> dropNote(@RequestParam("id") Integer id){
+
+        return ResultUtil.success(noteService.dropNote(id));
+    }
+
+
+
 
 
 

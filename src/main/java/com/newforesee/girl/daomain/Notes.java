@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * Created by newforesee on 2018/8/8.
@@ -17,6 +18,9 @@ public class Notes {
 
     @NotNull(message = "所属用户id必填")
     private Integer userid;
+
+
+    private Date updateTime;
 
     @Column(columnDefinition = "INT default 0")
     private Integer status;
@@ -56,6 +60,13 @@ public class Notes {
         this.status = status;
     }
 
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public String getTitle() {
         return title;
