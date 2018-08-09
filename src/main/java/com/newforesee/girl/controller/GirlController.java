@@ -48,8 +48,8 @@ public class GirlController {
     @PostMapping("/girl")
     public Result<Girl> girlAdd(@Valid Girl girl, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return null;
-           // return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
+            //return null;
+           return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
 
         }
         girl.setCupSize(girl.getCupSize());

@@ -3,4 +3,16 @@ server:
 girl:
   cupSize: B
   age: 16
+spring:
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://10.211.55.28:3306/dbgirl?useUnicode=true&amp;characterEncoding=utf8
+      username: root
+      password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
 
