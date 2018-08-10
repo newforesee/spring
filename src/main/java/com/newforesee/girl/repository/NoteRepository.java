@@ -16,8 +16,12 @@ public interface NoteRepository extends JpaRepository<Notes, Integer> {
     //列出该用户所有笔记
     List<Notes> findByUserid(Integer userid);
 
+    List<Notes> findByUseridAndStatus(Integer userid , Integer status);
+    //@Query("select * from Notes n where userid = :userid and status = :status")
+
+
     @Query("update Notes n set n.status = :status where n.id = :id ")
     @Modifying
-    Integer dropNote(@Param("id") Integer id,@Param("status") Integer status);
+    Integer changeNoteStatus(@Param("id") Integer id, @Param("status") Integer status);
 
 }

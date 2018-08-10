@@ -89,6 +89,7 @@ public class Notes {
         return "Notes{" +
                 "id=" + id +
                 ", userid=" + userid +
+                ", updateTime=" + updateTime +
                 ", status=" + status +
                 ", title='" + title + '\'' +
                 ", context='" + context + '\'' +
