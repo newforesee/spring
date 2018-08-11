@@ -32,6 +32,7 @@ public class NoteService {
         note.setUpdateTime(new Date());
         return noteRepository.save(note);
 
+
     }
 
     /**
@@ -46,7 +47,7 @@ public class NoteService {
     }
 
     /**
-     *
+     * 根据用户ID以及状态码查询笔记
      * @param userid
      * @param status
      * @return

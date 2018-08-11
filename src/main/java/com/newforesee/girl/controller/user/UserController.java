@@ -44,10 +44,10 @@ public class UserController {
      * @return
      */
     @PostMapping("/adduser")
-    public Result<Users> userAdd(@Valid Users users, BindingResult bindingResult) {
+    public Result<Users> userAdd(@Valid @RequestBody Users users, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return null;
-            // return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
+
+          return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
 
         }
         users.setUsername(users.getUsername());

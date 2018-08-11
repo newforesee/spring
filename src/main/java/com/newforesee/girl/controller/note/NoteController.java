@@ -16,6 +16,7 @@ import java.util.List;
 /**
  * Created by newforesee on 2018/8/9.
  */
+
 @RestController
 @CrossOrigin
 public class NoteController {
@@ -25,7 +26,7 @@ public class NoteController {
     private NoteService noteService;
 
     @PostMapping(value = "/noteadd")
-    public Result noteAdd(@Valid Notes note, BindingResult bindingResult){
+    public Result noteAdd(@Valid @RequestBody Notes note, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             //return null;
             return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());

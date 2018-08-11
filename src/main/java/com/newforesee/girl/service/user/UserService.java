@@ -1,6 +1,7 @@
 package com.newforesee.girl.service.user;
 
 import com.newforesee.girl.daomain.Result;
+import com.newforesee.girl.daomain.Users;
 import com.newforesee.girl.repository.UserRepository;
 import com.newforesee.girl.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,10 @@ public class UserService {
     public Result userList() {
 
         return ResultUtil.success(userRepository.findAll());
+    }
+
+
+    public Result adduser(Users users) {
+        return ResultUtil.success(userRepository.save(users));
     }
 }
