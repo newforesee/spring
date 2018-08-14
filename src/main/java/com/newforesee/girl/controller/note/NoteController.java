@@ -2,7 +2,6 @@ package com.newforesee.girl.controller.note;
 
 import com.newforesee.girl.daomain.Notes;
 import com.newforesee.girl.daomain.Result;
-import com.newforesee.girl.enums.NoteStatusEnum;
 import com.newforesee.girl.repository.NoteRepository;
 import com.newforesee.girl.service.note.NoteService;
 import com.newforesee.girl.utils.ResultUtil;
@@ -25,6 +24,12 @@ public class NoteController {
     @Autowired
     private NoteService noteService;
 
+    /**
+     * 添加一条笔记
+     * @param note
+     * @param bindingResult
+     * @return
+     */
     @PostMapping(value = "/noteadd")
     public Result noteAdd(@Valid @RequestBody Notes note, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
@@ -36,13 +41,13 @@ public class NoteController {
     }
 
     /**
-     * 查询当前用户未删除状态的笔记
+     * 查询当前用户指定状态的笔记
      * @param userid
      * @return
      */
     @PostMapping(value = "/noteslist")
-    public Result<List<Notes>> noteslist(@RequestParam("userid") Integer userid ){
-        return ResultUtil.success(noteService.notesListByUseridAndStatus(userid,NoteStatusEnum.ADD.getCode()));
+    public Result<List<Notes>> noteslist(@RequestParam("userid") Integer userid ,@RequestParam("statusid") Integer statusid){
+        return ResultUtil.success(noteService.notesListByUseridAndStatus(userid,statusid));
     }
 
     /**
@@ -56,6 +61,11 @@ public class NoteController {
         return ResultUtil.success(noteService.dropNote(id));
     }
 
+    /**
+     * 根据id查看一条笔记
+     * @param id
+     * @return
+     */
     @PostMapping("/notefindone")
     public Result<Notes> findOne(@RequestParam("id") Integer id){
 

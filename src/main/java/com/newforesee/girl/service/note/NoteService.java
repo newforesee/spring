@@ -31,8 +31,6 @@ public class NoteService {
         note.setStatus(NoteStatusEnum.ADD.getCode());
         note.setUpdateTime(new Date());
         return noteRepository.save(note);
-
-
     }
 
     /**

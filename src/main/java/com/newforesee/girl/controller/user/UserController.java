@@ -36,6 +36,7 @@ public class UserController {
         return ResultUtil.success(userRepository.findAll());
     }
 
+
     /**
      * 添加一个用户
      *
@@ -44,20 +45,34 @@ public class UserController {
      * @return
      */
     @PostMapping("/adduser")
-    public Result<Users> userAdd(@Valid @RequestBody Users users, BindingResult bindingResult) {
+    public Result<Users> userAdd(@Valid Users users, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
 
           return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
 
         }
+        System.out.println(users);
         users.setUsername(users.getUsername());
         users.setPassword(users.getPassword());
 
-        return ResultUtil.success(userRepository.save(users));
+        return ResultUtil.success(userService.adduser(users));
 
     }
 
+    @PostMapping("/login")
+    public Result userLogin(@RequestBody Users users){
+        users.setUsername(users.getUsername());
+        users.setPassword(users.getPassword());
 
+        return ResultUtil.success(userService.login(users));
+    }
+
+
+    /**
+     * 删除指定的用户
+     * @param id
+     * @return
+     */
     @PostMapping("/deleteuser/{id}")
     public Result deleteUserById(@RequestParam("id") Integer id){
         return ResultUtil.success("删除成功");

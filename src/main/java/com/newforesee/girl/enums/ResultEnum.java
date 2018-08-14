@@ -8,6 +8,7 @@ public enum ResultEnum {
     SUCCESS(0,"成功"),
     PRIMARY_SCHOOL(100,"小学生"),
     MIDDLE_SCHOOL(101,"中学生"),
+    USER_HAS_EXIST(56,"用户已存在"),
     ;
     private Integer code;
 

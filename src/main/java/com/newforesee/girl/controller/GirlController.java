@@ -2,6 +2,7 @@ package com.newforesee.girl.controller;
 
 import com.newforesee.girl.daomain.Girl;
 import com.newforesee.girl.daomain.Result;
+import com.newforesee.girl.exception.GirlException;
 import com.newforesee.girl.repository.GirlRepository;
 import com.newforesee.girl.service.GirlService;
 import com.newforesee.girl.utils.ResultUtil;
@@ -136,8 +137,8 @@ public class GirlController {
     }
 
     @GetMapping(value = "/girl/getAge/{id}")
-    public void getAge(@PathVariable("id") Integer id) throws Exception {
-        girlService.getAge(id);
+    public Result<Girl> getAge(@PathVariable("id") Integer id) throws GirlException {
+         return ResultUtil.success(girlService.getAge(id));
 
     }
 

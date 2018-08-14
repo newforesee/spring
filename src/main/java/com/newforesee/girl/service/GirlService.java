@@ -38,7 +38,7 @@ public class GirlService {
      * @param id
      * @throws Exception
      */
-    public void getAge(Integer id) throws Exception {
+    public Girl getAge(Integer id) throws GirlException {
         Girl girl = girlRepository.findOne(id);
         Integer age = girl.getAge();
         if (age < 10) {
@@ -48,6 +48,7 @@ public class GirlService {
             //返回你还在上初中
             throw new GirlException(ResultEnum.MIDDLE_SCHOOL);
         }
+        return girl;
 
     }
 
