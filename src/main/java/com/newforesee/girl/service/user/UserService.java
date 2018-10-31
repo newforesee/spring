@@ -48,9 +48,17 @@ public class UserService {
      * @param users
      * @return
      */
-    public Users login(Users users) {
+    public Users login(Users users) throws GirlException{
 
+        Users user = userRepository.findByUsername(users.getUsername());
+        if (user == null) {
+            throw new GirlException(ResultEnum.USER_NOT_EXIST);
+        }
+        if (user.getPassword().equals(users.getPassword())) {
+            user.setPassword("*************");
+            return user;
+        }
 
-        return null;
+            throw new GirlException(ResultEnum.PASSWD_WRONG);
     }
 }

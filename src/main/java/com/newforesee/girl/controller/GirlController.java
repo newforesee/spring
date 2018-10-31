@@ -132,6 +132,7 @@ public class GirlController {
 
     @PostMapping(value = "/girls/tow")
     public void gileTwo() {
+
         girlService.insertTwo();
 
     }

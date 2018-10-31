@@ -22,7 +22,9 @@ public class ExceptionHandle {
     public Result handle(Exception e) {
         if (e instanceof GirlException) {
             GirlException girlException = (GirlException) e;
-            return ResultUtil.error(girlException.getCode(), girlException.getMessage());
+            Result result = ResultUtil.error(girlException.getCode(), girlException.getMessage());
+            logger.warn("【异常返回信息】:"+result.toString());
+            return result;
         } else {
             logger.error("【系统异常】:",e);
             return ResultUtil.error(-1, "未知错误");

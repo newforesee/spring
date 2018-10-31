@@ -51,7 +51,7 @@ public class UserController {
           return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
 
         }
-        System.out.println(users);
+
         users.setUsername(users.getUsername());
         users.setPassword(users.getPassword());
 
@@ -60,9 +60,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result userLogin(@RequestBody Users users){
+    public Result userLogin( Users users){
         users.setUsername(users.getUsername());
         users.setPassword(users.getPassword());
+
 
         return ResultUtil.success(userService.login(users));
     }
